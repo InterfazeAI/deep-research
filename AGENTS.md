@@ -54,9 +54,11 @@ public/
   won't function without it. Also needs keys for chosen AI providers.
 - **No tests** — No test runner or test files in the repo. Quality relies on the
   Biome linter and manual example runs.
-- **`examples/` change API** — The `examples/simple_research.ts` file was modified
-  locally but never committed (see git log — the latest commit touches a different
-  `update/examples` branch). Example code may be out of sync with the published API.
+- **`examples/` change API** — The examples in `examples/` were last updated on
+  the `update/examples` branch (commit `91af1f2`, merged to `main` via PR #38 as
+  commit `33edd18`). The version bump to v0.1.4 (commit `243996e`) happened after
+  those changes, so example code may reference APIs from v0.1.3 that differ from
+  the current release.
 - **.env is gitignored** — Confirmed: `.env`, `.env.*`, `*.env` all in `.gitignore`.
   No secret files present in the repo.
 - **Node >=18 required** — Package uses ESM (`"type": "module"`).
