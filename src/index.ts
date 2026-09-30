@@ -35,9 +35,9 @@ export class DeepResearch {
       this.logger.setEnabled(this.config.logging.enabled);
     }
 
-    this.webSearchProvider = WebSearchProvider.getInstance(this.config);
+    this.webSearchProvider = new WebSearchProvider(this.config);
 
-    this.aiProvider = AIProvider.getInstance({
+    this.aiProvider = new AIProvider({
       OPENAI_API_KEY: this.config.OPENAI_API_KEY,
       OPENROUTER_API_KEY: this.config.OPENROUTER_API_KEY,
       defaultModel: this.config.models?.default,

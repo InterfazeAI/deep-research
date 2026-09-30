@@ -35,7 +35,8 @@
     "build": "pkgroll --minify --src=./src",
     "lint": "biome lint .",
     "format": "biome check --write .",
-    "dev": "tsx examples/simple_research.ts"
+    "dev": "tsx examples/simple_research.ts",
+    "test": "tsx --test test/*.test.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.1.2",

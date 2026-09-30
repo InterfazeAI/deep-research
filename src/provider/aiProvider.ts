@@ -10,7 +10,6 @@ import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 export type ModelType = "default" | "reasoning" | "output";
 
 export class AIProvider {
-  private static instance: AIProvider;
   private providers: Map<string, ProviderV1> = new Map();
   private models: {
     default: LanguageModelV1;
@@ -21,7 +20,7 @@ export class AIProvider {
   /**
    * Initialize the provider with API keys from config and optional custom models
    */
-  private constructor({
+  constructor({
     OPENAI_API_KEY,
     DEEPINFRA_API_KEY,
     defaultModel,
@@ -46,37 +45,6 @@ export class AIProvider {
         }),
       output: outputModel || createOpenRouter({ apiKey: OPENROUTER_API_KEY! }).languageModel("moonshotai/kimi-k2-0905"),
     };
-  }
-
-  /**
-   * Get singleton instance of AIProvider
-   */
-  public static getInstance({
-    OPENAI_API_KEY,
-    DEEPINFRA_API_KEY,
-    OPENROUTER_API_KEY,
-    defaultModel,
-    reasoningModel,
-    outputModel,
-  }: {
-    OPENAI_API_KEY?: string;
-    DEEPINFRA_API_KEY?: string;
-    OPENROUTER_API_KEY?: string;
-    defaultModel?: LanguageModelV1;
-    reasoningModel?: LanguageModelV1;
-    outputModel?: LanguageModelV1;
-  }): AIProvider {
-    if (!AIProvider.instance) {
-      AIProvider.instance = new AIProvider({
-        OPENAI_API_KEY,
-        DEEPINFRA_API_KEY,
-        OPENROUTER_API_KEY,
-        defaultModel,
-        reasoningModel,
-        outputModel,
-      });
-    }
-    return AIProvider.instance;
   }
 
   getModel(key: ModelType) {
